@@ -13,7 +13,7 @@ class TodoForm(ModelForm):
     
     class Meta:
         model = Todo
-        fields = ['done','heading','content']
+        fields = ['heading']
 
 
  

@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
 class Todo(models.Model):
 
     heading = models.TextField(max_length = 30)        
-    content = models.TextField()
+    # content = models.TextField()
     done = models.BooleanField(default= False)
     user = models.ForeignKey(CustomUser,on_delete = models.CASCADE)  
     created = models.DateTimeField(auto_now_add = True)

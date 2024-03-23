@@ -2,16 +2,16 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 
-from .models import CustomUser
+from .forms import UserForm
 
-def test(request):
-    return HttpResponse("Joseph is a PDF")
+from .models import CustomUser,Todo
 
 
 def loginUser(request):
 
-    if request.user.is_authenticated:
-        return 
+    form = UserForm()
+    # if request.user.is_authenticated:
+    #     return redirect('home')
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -25,9 +25,20 @@ def loginUser(request):
         if user:
             login(user)
             context = {}
-            # return redirect()
+            
+            return redirect('home')
         else:
             pass
         
-        
+    return render(request,'authform.html',{"form":form})
 
+def home(request):
+
+    todos = Todo.objects.all()
+
+    if request.method == "POST":
+        todo = request.POST.get('todo')
+        print("user is " ,request.user)
+        todo_obj = Todo.objects.create(heading=todo,user=request.user)
+    context = {'todos':todos}
+    return render(request,'index.html',context)
