@@ -79,7 +79,10 @@
        align-items: center;
 
       }
+      .date{
 
+        font-size: 2vh;
+      }
     </style>
 </head>
 <body>
@@ -109,41 +112,65 @@
       </div>
     </div>
     <div class="todo-list-container">
-
+    {% for todo in todos %}
       <li class="list-group-item d-flex justify-content-between align-content-center">
 		  	<div class="d-flex flex-row">
 		  		<div class="ml-5">
-		  			<h6 class="mb-0">Macan Worldgroup</h6>
+		  			<h6 class="mb-0">{{ todo.heading }}</h6>
 		  			<div class="about">
-		  				<span>Jan 22, 2020</span>
+		  				<span class = "date">{{ todo.created }}</span>
 		  			</div>
 		  		</div>
 		  	</div>
 		  	<div class="check">	
-		  		<button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+		  		<button type="button" class="btn-close btn-close-white" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Close"></button>
 		  	</div>
-		  </li>
+        <!-- modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger" id="delete-task">Delete Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p style ="color:black;">Do you want to delete this task</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'deleteTodo' todo.id %}" type="button" class="btn btn-danger">delete</a>
+              </div>
+              
+            </div>
+          </div>
+        
 
-      <li class="list-group-item d-flex justify-content-between align-content-center">
-		  	<div class="d-flex flex-row">
-		  		<div class="ml-5">
-		  			<h6 class="mb-0">Macan Worldgroup</h6>
-		  			<div class="about">
-		  				<span>Jan 22, 2020</span>
-		  			</div>
-		  		</div>
-		  	</div>
-		  	<div class="check">	
-		  		<button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-		  	</div>
-		  </li>
 
-      
+
+
+		  </li>
+    {% endfor %}
     </div>
   </div>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </div>
+  </div>
+
+
+</div>
+
+  
+
+<script>
+  const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
 </body>
 </html>

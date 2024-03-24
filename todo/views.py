@@ -42,3 +42,12 @@ def home(request):
         todo_obj = Todo.objects.create(heading=todo,user=request.user)
     context = {'todos':todos}
     return render(request,'index.html',context)
+
+def deleteTodo(request,pk):
+
+    todo = Todo.objects.get(id= pk)
+
+    if todo:
+        todo.delete()
+        return redirect('home')
+    
