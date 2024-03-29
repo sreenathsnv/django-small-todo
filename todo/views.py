@@ -66,7 +66,7 @@ def home(request):
 
     if request.method == "POST":
         todo = request.POST.get('todo')
-        print("user is " ,request.user)
+        
         todo_obj = Todo.objects.create(heading=todo,user=request.user)
 
     context = {'todos':todos}
@@ -84,13 +84,18 @@ def forbidden(request):
     return render(request,'403.html')
 
 def updateTodo(request,pk):
-    page= "update"
-    update_todo = Todo.objects.get(id = pk)
-
+    todos = Todo.objects.filter(user = request.user)
+    update_todo = Todo.objects.get(id=pk)
+    
     if request.method == "POST":
-        pass
+        todo_u = request.POST.get('todo')
+        update_todo.heading = todo_u
+        update_todo.save()
+
+        return redirect('home')
     context = {
-        "page":page,
-        "value" : update_todo,
+        "page":"update",
+        "todos" : todos,
+        "todo" : update_todo
                }
     return render(request,'index.html',context) 

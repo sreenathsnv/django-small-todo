@@ -117,3 +117,9 @@
     margin-top: 3vh;
     margin-bottom: 3vh;
   }
+  .check
+  {
+    margin-left: 26vh;
+    display: flex;
+    justify-content: space-around;
+  }
