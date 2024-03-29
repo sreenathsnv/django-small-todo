@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+
+  body{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  .nav-content-div{
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    min-height: 10vh;
+    background: #343a40;
+  }
+  .bt-nav
+  {
+    border-radius: 0vh;
+    width: 100%;
+  }
+  .todo-container
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0rem;
+    background: #ffff;
+  }
+
+  .form-container
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10rem;
+  }
+  form{
+
+    display: flex;
+    flex-direction: row;
+    width: 70vh;
+    justify-content: space-around;
+    margin-left: 1vh;
+    
+
+  }
+  input{
+
+    margin-right: 1rem;
+  }
+  input[type="submit"]{
+    font-size: 2rem;
+    font-weight: 600;
+    padding:0vh 1rem 0rem 1rem;
+  }
+  .list-group-item{
+    
+    border-radius: none; 
+    background: #5E35B1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color:#fff;
+    width: 70vh;
+    margin:.5rem 1.5rem .5rem 1.5rem;
+    
+
+  }
+  .todo-list-container{
+
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+
+  }
+  .date{
+
+    font-size: 2vh;
+    font-style: italic;
+    color: #9a989fcb;
+  }
+
+  .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+  }
+  img{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    width:70vh;
+    height:30vh;
+
+  }
+  .user{
+
+    color: #fff;
+    margin-left: 3vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 5vh;
+
+  }
+  .mainH
+  {
+    color:rgb(20, 20, 20);
+    font-size: 10vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 3vh;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }

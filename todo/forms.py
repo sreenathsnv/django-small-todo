@@ -3,11 +3,18 @@ from django.forms import ModelForm
 from .models import CustomUser,Todo
 
 
-class UserForm(ModelForm):
+class UserRegisterForm(ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username','email','password']
+        fields = ['username','email']
+
+class UserLoginForm(ModelForm):
+
+    class Meta:
+        model = CustomUser
+        fields = ['email']
+
 
 class TodoForm(ModelForm):
     

@@ -1,53 +1,59 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* Styling for input[type="text"] */
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-}
-
-/* Styling for input[type="email"] */
-input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-}
-
-/* Styling for input[type="password"] */
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-}
-
-    </style>
+    <link rel="stylesheet" href="{% static 'styles/auth.css' %}">
+    <title>Login | Todo</title>
 </head>
 <body>
-    <form  method="POST">
+    <body>
+        <section class="container">
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                    {% if page == 'login' %}
+                    <h1 class="opacity">LOGIN</h1>
+                    {% else %}
+                    <h1 class="opacity">Register</h1>
+                    {% endif %}
 
-      {{ form.as_p}}
-      <input type="submit" value="Login">
-    </form>
+                    <!-- Login -->
+                    {% if page == 'login' %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="email" placeholder="user@email.com" name="email" required/>
+                        <input type="password" placeholder="Password" name="password" required />
+                        <button class="opacity">Login</button>
+                    </form>
+                    <div class="register-forget opacity">
+                        <a href="{% url 'registerUser' %}">REGISTER</a>
+                        
+                    </div>
+
+                    <!-- Register -->
+                    {% else %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Username" name="username" required/>
+                        <input type="email" placeholder="user@email.com" name="email" required/>
+                        <input type="password" placeholder="Password" name="password" required />
+                        <button class="opacity">Register</button>
+                    </form>
+                    <div class="register-forget opacity">
+                        <a href="{% url 'loginUser' %}">Login</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="circle circle-two"></div>
+            </div>
+            <div class="theme-btn-container"></div>
+        </section>
+      </body>
+<script src="{% static 'Js/auth.js' %}"></script>
 </body>
 </html>
